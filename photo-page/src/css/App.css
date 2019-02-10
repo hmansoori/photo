@@ -27,6 +27,28 @@
 
 }
 
+.contact-photo {
+  height: auto;
+  width: 450px;
+  margin-top: 10px;
+}
+
+.page-title {
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+}
+a {
+  all: unset;
+}
+.navLink {
+  padding-right: 20px;
+  color: #ffffff;
+}
+
+.navLink:active {
+  color: #9ae5e5;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

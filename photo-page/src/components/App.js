@@ -16,12 +16,12 @@ class App extends Component {
       <Router>
         <div>
         <Navigation />
-      
+        
   
         <Route exact path={routes.ABOUT} component={() => <AboutPage />} />
         <Route exact path={routes.PHOTOS} component={() => <PhotoPage />} />
         <Route exact path={routes.CONTACT} component={() => <ContactPage />} />
-
+  
       </div>
     </Router>
     );
