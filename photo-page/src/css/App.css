@@ -22,9 +22,15 @@
   color: #61dafb;
 }
 
-.title {
-    display: 'block',
+.about-text {
+  font-family: 'Open Sans';
+  padding-top: 50px;
+}
 
+.about-photo {
+  height: auto;
+  width: 700px;
+  margin-top: 30px;
 }
 
 .contact-photo {
@@ -41,14 +47,25 @@
 a {
   all: unset;
 }
+
 .navLink {
   padding-right: 20px;
   color: #ffffff;
 }
 
+.navLink:link {
+  text-decoration: none;
+}
+.navLink:visited {
+  color: #ffffff;
+  text-decoration: none;
+  
+}
 .navLink:active {
   color: #9ae5e5;
+  text-decoration: none;
 }
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

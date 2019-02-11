@@ -52,7 +52,6 @@ class ContactPage extends Component {
             <Button as="input" type="submit" variant="secondary" value="Send" />
           </Col>
         </Row>
-
       </Container>
     );
   }
