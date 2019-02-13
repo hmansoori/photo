@@ -1,0 +1,24 @@
+{
+  "name": "photo",
+  "version": "1.0.0",
+  "description": "photo portfolio",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hmansoori/photo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hmansoori/photo/issues"
+  },
+  "homepage": "https://github.com/hmansoori/photo#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
