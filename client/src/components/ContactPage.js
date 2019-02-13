@@ -6,29 +6,49 @@ import Image from 'react-bootstrap/Image';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-
+const byPropKey = (propertyName, value) => () => ({
+  [propertyName]: value,
+});
 
 class ContactPage extends Component {
 
-  // handleSubmit(e) {
-  //   e.preventDefault();
-  //   axios({
-  //     method: "POST", 
-  //     url:"http://localhost:3001/send", 
-  //     data: {
-  //         name: name,   
-  //         email: email,  
-  //         messsage: message
-  //     }
-  // }).then((response)=>{
-  //     if (response.data.msg === 'success'){
-  //         alert("Message Sent."); 
-  //         this.resetForm()
-  //     }else if(response.data.msg === 'fail'){
-  //         alert("Message failed to send.")
-  //     }
-  // })
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      firstName: '',
+      lastName: '',
+      subject: '',
+      message: ''
+    }
+  }
+  // Function that handles email sending upon hitting submission button
+  // sends ajax request to express
+  handleSubmit(e) {
+    e.preventDefault();
+
+    axios.post('/send', {
+      data: {
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        email: this.state.email,
+        subject: this.state.subject,
+        messsage: this.state.message
+      }
+    }).then((response) => {
+      if (response.data.msg === 'success') {
+        alert("Message Sent.");
+        this.resetForm()
+      } else if (response.data.msg === 'fail') {
+        alert("Message failed to send.")
+      }
+    })
+  }
+
+  resetForm() {
+    document.getElementById('contact-form').reset();
+  }
+
   render() {
     return (
       <Container>
@@ -45,27 +65,27 @@ class ContactPage extends Component {
                   </Form.Label>
                 <Form.Row>
                   <Col>
-                    <Form.Control placeholder="First name" />
+                    <Form.Control placeholder="First name" onChange={event => this.setState(byPropKey('firstName', event.target.value))} />
                   </Col>
                   <Col>
-                    <Form.Control placeholder="Last name" />
+                    <Form.Control placeholder="Last name" onChange={event => this.setState(byPropKey('lastName', event.target.value))} />
                   </Col>
                 </Form.Row>
               </Form.Group>
               <Form.Group controlId="formGroupEmail">
                 <Form.Label>Email Address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
+                <Form.Control type="email" placeholder="Enter email" onChange={event => this.setState(byPropKey('email', event.target.value))} />
                 <Form.Text className="text-muted">
                   Your email will not be shared with anyone else.
                 </Form.Text>
               </Form.Group>
               <Form.Group controlId="formGroupSubject">
                 <Form.Label>What do you want to talk about?</Form.Label>
-                <Form.Control placeholder="Subject line" />
+                <Form.Control placeholder="Subject line" onChange={event => this.setState(byPropKey('subject', event.target.value))} />
               </Form.Group>
               <Form.Group controlId="formGroupTextArea">
                 <Form.Label>Your Message</Form.Label>
-                <Form.Control as="textarea" rows="3" />
+                <Form.Control as="textarea" rows="3" onChange={event => this.setState(byPropKey('message', event.target.value))} />
               </Form.Group>
             </Form>
             <Button as="input" type="submit" variant="secondary" value="Send" />
