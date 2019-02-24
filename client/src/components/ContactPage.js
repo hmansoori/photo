@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import axios from 'axios';
 
 const byPropKey = (propertyName, value) => () => ({
   [propertyName]: value,
@@ -14,44 +15,44 @@ class ContactPage extends Component {
 
   constructor(props) {
     super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       email: '',
       firstName: '',
       lastName: '',
       subject: '',
       message: ''
-    }
+    };
   }
+
   // Function that handles email sending upon hitting submission button
   // sends ajax request to express
   handleSubmit(e) {
     e.preventDefault();
+    var messageData = {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email,
+      subject: this.state.subject,
+      message: this.state.message
+    }
 
-    axios.post('/send', {
-      data: {
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        email: this.state.email,
-        subject: this.state.subject,
-        messsage: this.state.message
-      }
+    axios({
+        method: 'POST',
+        url:'http://localhost:5000/send',
+        data: messageData
     }).then((response) => {
       if (response.data.msg === 'success') {
         alert("Message Sent.");
-        this.resetForm()
       } else if (response.data.msg === 'fail') {
         alert("Message failed to send.")
       }
     })
   }
 
-  resetForm() {
-    document.getElementById('contact-form').reset();
-  }
-
   render() {
     return (
-      <Container>
+      <Container id='contact-form'>
         <h1 className='page-title'>Let's keep in touch</h1>
         <Row>
           <Col>
@@ -88,7 +89,7 @@ class ContactPage extends Component {
                 <Form.Control as="textarea" rows="3" onChange={event => this.setState(byPropKey('message', event.target.value))} />
               </Form.Group>
             </Form>
-            <Button as="input" type="submit" variant="secondary" value="Send" />
+            <Button as="input" type="submit" variant="secondary" value="Send" onClick={this.handleSubmit}/>
           </Col>
         </Row>
       </Container>
