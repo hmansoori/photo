@@ -14,7 +14,7 @@ class AboutPage extends Component {
         <h1 className='page-title'>Meet Hannah</h1>
         <Row>
           <Col>
-            <Image className='about-photo' src='https://firebasestorage.googleapis.com/v0/b/photo-page-8770a.appspot.com/o/img%2FIMG_5982.jpg?alt=media&token=83a7f32e-6964-426c-91de-bf4e9a82f855' />
+            <Image className='about-photo' src='https://firebasestorage.googleapis.com/v0/b/photo-page-8770a.appspot.com/o/IMG_0248.jpg?alt=media&token=32d87aa3-2617-4917-b512-cac87feb8b83'/>
           </Col>
           <Col>
             <p className='about-text'>Hannah Mansoori is a professional software developer and photographer currently living in Seattle, Washington.
