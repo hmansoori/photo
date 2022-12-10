@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/hmansoori/photo#readme",
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "nodemailer": "^5.1.1"
   }
 }
